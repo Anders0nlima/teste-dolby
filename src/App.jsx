@@ -34,7 +34,7 @@ const App = () => {
         <div className="menu-icon" onClick={() => setIsSidebarOpen(true)}>
           ☰
         </div>
-        <div className="brand-name">Mekpool</div>
+        <div className="brand-name">MEKPOOL</div>
         <div className="search-icon">🔍</div>
       </div>
       {isVideoFocused && (
