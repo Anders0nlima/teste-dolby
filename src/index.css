@@ -13,6 +13,7 @@ body, html {
   overflow: hidden;
 }
 
+/* Vídeo principal */
 video {
   position: absolute;
   top: 50%;
@@ -22,11 +23,25 @@ video {
   object-fit: cover;
   transform: translate(-50%, -50%);
   z-index: 1;
-  transition: transform 0.5s;
 }
 
-video.focused {
-  transform: scale(1.2) translate(-50%, -50%);
+/* Camada escura sobre o vídeo */
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9); /* Escurece a tela */
+  z-index: 2;
+
+  /* Criando os recortes das bolas */
+  -webkit-mask: radial-gradient(circle 90px at 30% 50%, transparent 30%, black 31%),
+                   radial-gradient(circle 90px at 70% 50%, transparent 30%, black 31%);
+  mask: radial-gradient(circle 90px at 30% 50%, transparent 30%, black 31%),
+        radial-gradient(circle 90px at 70% 50%, transparent 30%, black 31%);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
 }
 
 .overlay {
@@ -38,7 +53,7 @@ video.focused {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 2;
+  z-index: 4; /* Garante que o overlay fique acima da cortina */
   background: rgba(0, 0, 0, 0.5);
   transition: opacity 0.5s;
 }
@@ -51,11 +66,22 @@ video.focused {
   font-size: 24px;
   cursor: pointer;
   color: white;
+  transition: color 0.3s ease;
+}
+
+.menu-icon:hover, .search-icon:hover, .close-icon:hover {
+  color: #ccc; /* Cor ao passar o mouse */
 }
 
 .brand-name {
-  font-size: 24px;
+  font-size: 36px;
+  font-weight: bold;
   color: white;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
 }
 
 .video-title {
@@ -65,7 +91,7 @@ video.focused {
   transform: translate(-50%, -50%);
   font-size: 36px;
   color: white;
-  z-index: 3;
+  z-index: 5; /* Garante que o título fique acima de tudo */
   opacity: 0;
   animation: fadeIn 0.5s forwards;
 }
@@ -83,7 +109,7 @@ video.focused {
   width: 300px;
   height: 100%;
   background: rgba(0, 0, 0, 0.9);
-  z-index: 4;
+  z-index: 6; /* Garante que a sidebar fique acima de tudo */
   transition: left 0.5s;
 }
 
