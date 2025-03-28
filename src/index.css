@@ -128,3 +128,54 @@ video {
   width: 100%;
   cursor: pointer;
 }
+
+ /* ------- teste dois -------- */
+
+ /* Container do TesteDois */
+.teste-dois-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Vídeo de fundo */
+.video-background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+/* Links no centro inferior */
+.links-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.video-link img {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.video-link img:hover {
+  transform: scale(1.1);
+}
+
