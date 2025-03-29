@@ -8,19 +8,83 @@ import animacao from '../assets/animacao.jpg';
 import audio from '../assets/audio.jpg';
 import filmes from '../assets/filmes.jpg';
 
+import { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+import { TextPlugin } from 'gsap/TextPlugin';
+
+gsap.registerPlugin(TextPlugin);
+
 
 function TesteDuis() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+
+  const logoRef = useRef(null);
+
+  useEffect(() => {
+  const logo = logoRef.current;
+  if(!logo) return;
+
+  const originalText = 'Mekpool';
+  const letters = originalText.split('');
+
+ const animateLogo = () => {
+  const timeline = gsap.timeline({
+    repeat: -1,
+    repeatDelay: 1
+  })
+
+  for(let i = letters.length; i > 1; i--){
+    timeline.to(logo, {
+      text:{
+        value: letters.slice(0, i).join('') + '|',
+        delimiter: ''
+      },
+      duration: 0.2,
+      ease:'power2.inOut'
+    })
+  }
+
+  timeline.to(logo, {
+    text:{value: 'M|', delimiter: ''},
+    duration: 0.5
+  })
+
+  for(let i = 2; i <= letters.length; i++){
+   timeline.to(logo, {
+    text:{
+      value: letters.slice(0, i).join('') + (i < letters.length ? '|' : ''),
+      delimiter: ''
+    },
+    duration: 0.2,
+    ease: 'power2.inOut'
+   })
+  }
+
+  timeline.to(logo, {
+    text: {value: originalText, delimiter: ''},
+    duration: 0.2
+  })
+ }
+
+ animateLogo();
+
+ return () => {
+  gsap.killTweensOf(logo);
+ }
+}, [])
+
+
   return (
     <div className="teste-dois-container">
-      
+
       {/* Navbar */}
       <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
         <button className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
           <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
         </button>
-        <h1 className="logo">Mekpool</h1>
+        <h1 className="logo" ref={logoRef}>Mekpool</h1>
         <button className="search-icon">
           <FontAwesomeIcon icon={faSearch} />
         </button>
