@@ -10,10 +10,16 @@ function NavBar(){
               <Link className={styles.item} to="/">testeUm</Link>
             
             
-              <Link className={styles.item} to="/testeDois">testeDois</Link>
+              <Link className={styles.item} to="/testeDuis">testeDois</Link>
           
           
               <Link className={styles.item} to="/testeTres">testetres</Link>
+
+              <Link className={styles.item} to="/testeQuatro">testeQuatro</Link>
+
+              <Link className={styles.item} to="/testeQuatro">testeCinco</Link>
+
+              <Link className={styles.item} to="/testeQuatro">TesteSeis</Link>
           
             
         </div>

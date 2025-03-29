@@ -6,7 +6,7 @@ import audio from '../assets/audio.jpg'; // Importando a imagem
 import filmes from '../assets/filmes.jpg'; // Importando a imagem
 import NavBar from '../comp/NavBar';
 
-function TesteDois(){
+function TesteDuis(){
     return(
        <div className="teste-dois-container">
         <div className="video-background">
@@ -30,4 +30,4 @@ function TesteDois(){
     )
 }
 
-export default TesteDois
+export default TesteDuis
